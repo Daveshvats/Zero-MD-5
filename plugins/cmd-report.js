@@ -1,7 +1,7 @@
 let handler = async (m, { conn,text }) => {
-if (!text) return replygcZero(`Example : ${
-    prefixo + command
-  } hi dev play command is not working`)
+    const pushname = m.pushName || "No Name"
+    const owner = "917404854406"
+if (!text) return replygcZero(`Example : /reportbug hi dev play command is not working`)
         let textt = `*| REQUEST/BUG |*`
         let teks1 = `\n\n*User* : @${
 m.sender.split("@")[0]
