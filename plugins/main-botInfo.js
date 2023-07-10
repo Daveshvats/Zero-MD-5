@@ -53,8 +53,6 @@ let infobt = `
 
 *≡ OWNER*
   *GHOST*
-▢ WhatsApp :
-  • (write only if necessary) 
  *≡ MODERATORS*
   *KAKYOIN*
 ▢ WhatsApp : wa.me/573003329972

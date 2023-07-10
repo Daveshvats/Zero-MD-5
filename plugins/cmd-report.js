@@ -1,4 +1,4 @@
-let handler = async (m, { conn }) => {
+let handler = async (m, { conn,text }) => {
 if (!text) return replygcZero(`Example : ${
     prefixo + command
   } hi dev play command is not working`)

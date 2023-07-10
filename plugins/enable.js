@@ -165,15 +165,13 @@ const listMessage = {
       
     default:
       if (!/[01]/.test(command)) return m.reply(`
-≡ Lista de Opciones
+≡ Option List
 
 ┌─⊷ *ADMIN*
 ▢ welcome
 ▢ antilink
 ▢ detect 
 ▢ document
-▢ nsfw
-▢ onlylatinos
 └───────────── 
 ┌─⊷ *USERS*
 ▢ autolevelup
@@ -184,7 +182,7 @@ const listMessage = {
 ▢ solopv
 ▢ sologp
 └─────────────
-*📌 Ejemplo :*
+*📌 Example :*
 *${usedPrefix}on* welcome
 *${usedPrefix}off* welcome
 `)
