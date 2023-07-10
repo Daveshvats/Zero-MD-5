@@ -2,8 +2,8 @@ let handler = async (m, { conn,text }) => {
 if (!text) return replygcZero(`Example : ${
     prefixo + command
   } hi dev play command is not working`)
-        textt = `*| REQUEST/BUG |*`
-        teks1 = `\n\n*User* : @${
+        let textt = `*| REQUEST/BUG |*`
+        let teks1 = `\n\n*User* : @${
 m.sender.split("@")[0]
 }\n*Request/Bug* : ${text}`
         teks2 = `\n\n*Hii ${pushname},You request has been forwarded to my Owners*.\n*Please wait...*`
