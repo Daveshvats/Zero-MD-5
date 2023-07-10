@@ -6,7 +6,7 @@ if (!text) return replygcZero(`Example : /reportbug hi dev play command is not w
         let teks1 = `\n\n*User* : @${
 m.sender.split("@")[0]
 }\n*Request/Bug* : ${text}`
-        teks2 = `\n\n*Hii ${pushname},You request has been forwarded to my Owners*.\n*Please wait...*`
+        let teks2 = `\n\n*Hii ${pushname},You request has been forwarded to my Owners*.\n*Please wait...*`
         for (let i of owner) {
             conn.sendMessage(i + "@s.whatsapp.net", {
                 text: textt + teks1,
