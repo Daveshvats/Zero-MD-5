@@ -28,7 +28,7 @@ const senderNumber = sender.split('@')[0]
 					var cerdas = cerdhas[Math.floor(Math.random() * cerdhas.length)]
 					var berani = berhani[Math.floor(Math.random() * berhani.length)]
 					var takut = mengheikan[Math.floor(Math.random() * mengheikan.length)]
-					 profile = `*≡══《 Check @${bet.split('@')[0]} 》══≡*
+					const profile = `*≡══《 Check @${bet.split('@')[0]} 》══≡*
 
 *Name :* ${pushname}
 *Characteristic :* ${sipat}
@@ -44,7 +44,7 @@ const senderNumber = sender.split('@')[0]
 *Afraid :* ${takut}%
 
 *≡═══《 CHECK PROPERTIES 》═══≡*`
-					buff = await getBuffer('https://i.ibb.co/QjMYkmN/Monochrome-Modern-Technology-Black-Logo.png')
+					const buff = await getBuffer('https://i.ibb.co/QjMYkmN/Monochrome-Modern-Technology-Black-Logo.png')
 conn.sendMessage(m.chat, { image: buff, caption: profile, mentions: [bet]},{quoted:m})}
 handler.help = ['checkme']
 handler.tags = ['group']
