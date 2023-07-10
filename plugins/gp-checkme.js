@@ -44,8 +44,8 @@ const senderNumber = sender.split('@')[0]
 *Afraid :* ${takut}%
 
 *≡═══《 CHECK PROPERTIES 》═══≡*`
-					const buff = fetch('https://i.ibb.co/QjMYkmN/Monochrome-Modern-Technology-Black-Logo.png')
-conn.sendMessage(m.chat, { image: buff, caption: profile, mentions: [bet]},{quoted:m})}
+					const buff = 'https://i.ibb.co/QjMYkmN/Monochrome-Modern-Technology-Black-Logo.png'
+conn.sendMessage(m.chat, { image: {url:buff}, caption: profile, mentions: [bet]},{quoted:m})}
 handler.help = ['checkme']
 handler.tags = ['group']
 handler.command = ['checkme'] 
