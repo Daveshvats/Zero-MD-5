@@ -18,5 +18,6 @@ handler.help = ['ban @user']
 handler.tags = ['owner']
 handler.command = /^ban$/i
 handler.rowner = true
+handler.mods = true
 
 export default handler
