@@ -18,6 +18,7 @@ if (!args[0] && !m.quoted) {
       userPfp = defaultpp
     }
   }
+  const pushname = m.pushName || "No Name"
   const waUserName = pushname
   const quoteText = m.quoted ? m.quoted.body : args.join(" ")
   const quoteJson = {
