@@ -1,3 +1,5 @@
+import { fetch, setGlobalDispatcher, Agent } from 'undici'
+setGlobalDispatcher(new Agent({ connect: { timeout: 60_000 } }) )
 let handler = async (m, { conn,text }) => {
 if (!text) {
     return m.reply(`Example: *
