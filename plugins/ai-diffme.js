@@ -40,7 +40,7 @@ let buru = `"color_line",
 
 	const q = m.quoted ? m.quoted : m;
 	const mime = (q.msg || q).mimetype || q.mediaType || "";
-    if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command ${prefixo + command}!`)
+    if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command /diffme anime !`)
 	// supported image mimetype is JPG/JPEG/PNG
 	if (!/image\/(jpe?g|png)/.test(mime)) {
 		return m.reply(`Unsupported file!`);

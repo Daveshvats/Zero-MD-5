@@ -1,6 +1,9 @@
 let handler = async (m, { conn }) => {
-if (!quoted) return replygcZero(`Where is the picture?`)
-			if (!/image/.test(mime)) return replygcZero(`Send/Reply Photos With Captions ${prefixo + command}`)
+	
+	const q = m.quoted ? m.quoted : m;
+	const mime = (q.msg || q).mimetype || q.mediaType || "";
+    if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command!`)
+			if (!/image/.test(mime)) return replygcZero(`Send/Reply Photos With Captions /remini`)
 			m.reply('*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*')
 			const { remini } = require('./lib/remini')
 			let media = await q.download()
