@@ -1,44 +1,17 @@
-import { sticker } from '../lib/sticker.js'
-import uploadFile from '../lib/uploadFile.js'
-import uploadImage from '../lib/uploadImage.js'
-import { webp2png } from '../lib/webp2mp4.js'
-
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-  let stiker = false
-       let stick = args.join(" ").split("|");
-       let f = stick[0] !== "" ? stick[0] : packname;
-       let g = typeof stick[1] !== "undefined" ? stick[1] : author;
-  try { 	
-    let q = m.quoted ? m.quoted : m
-    let mime = (q.msg || q).mimetype || q.mediaType || ''
-    if (/webp|image|video/g.test(mime)) {
-      if (/video/g.test(mime)) if ((q.msg || q).seconds > 11) return m.reply('maximum 10 seconds')
-      let img = await q.download?.()
-      if (!img) throw `✳️ Reply to an image or video with*${usedPrefix + command}*`
-      let out
-      try {
-        stiker = await sticker(img, false, f, g)
-      } catch (e) {
-        console.error(e)
-      } finally {
-        if (!stiker) {
-          if (/webp/g.test(mime)) out = await webp2png(img)
-          else if (/image/g.test(mime)) out = await uploadImage(img)
-          else if (/video/g.test(mime)) out = await uploadFile(img)
-          if (typeof out !== 'string') out = await uploadImage(img)
-          stiker = await sticker(false, out, f, g)
-        }
-      }
-    } else if (args[0]) {
-      if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packname, global.author)
-      else return m.reply('invalid url')
-    }
-  } catch (e) {
-    console.error(e)
-    if (!stiker) stiker = e
-  } finally {
-    if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null, rpl)
-    else throw 'Conversion failed, try to send *image/video/gif* first, then reply with command'
+  const prefixo = "/"
+  if (!quoted) return m.reply(`Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds`)
+  if (/image/.test(mime)) {
+  let media = await q.download()
+  let encmedia = await conn.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+  
+  } else if (/video/.test(mime)) {
+  if ((quoted.msg || quoted).seconds > 11) return m.reply('Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds')
+  let media = await q.download()
+  let encmedia = await conn.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+  
+  } else {
+  m.reply(`Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds`)
   }
 }
 handler.help = ['sticker']
