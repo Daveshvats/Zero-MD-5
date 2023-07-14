@@ -4,6 +4,7 @@ import os from 'os'
 import crypto from 'crypto'
 const {tmpdir} = os
 import ffmpeg from 'fluent-ffmpeg'
+import webp from 'node-webpmux'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   async function writeExifImg (media, metadata) {
     async function imageToWebp (media) {
