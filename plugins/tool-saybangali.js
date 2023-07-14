@@ -1,5 +1,6 @@
 const ttt = require("google-tts-api");
 let handler = async (m, { conn,text }) => {
+  const pushName = m.pushName || "No Name"
 if (!text && m.quoted) {
     message = `${m.quoted ? m.quoted.msg : ""}`;
   } else if (args[0]) {
