@@ -1,5 +1,8 @@
 import fs from "fs"
 import path from 'path'
+import os from 'os'
+import crypto from 'crypto'
+const tmpdir = os
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   async function writeExifImg (media, metadata) {
     async function imageToWebp (media) {
