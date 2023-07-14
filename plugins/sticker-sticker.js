@@ -6,6 +6,74 @@ const {tmpdir} = os
 import ffmpeg from 'fluent-ffmpeg'
 import webp from 'node-webpmux'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+  async function imageToWebp (media) {
+    const tmpFileOut = path.join(tmpdir(), `${crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileIn = path.join(tmpdir(), `${crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.jpg`)
+    fs.writeFileSync(tmpFileIn, media)
+    await new Promise((resolve, reject) => {
+        ffmpeg(tmpFileIn)
+            .on("error", reject)
+            .on("end", () => resolve(true))
+            .addOutputOptions([
+                "-vcodec",
+                "libwebp",
+                "-vf",
+                "scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse"
+            ])
+            .toFormat("webp")
+            .save(tmpFileOut)
+    })
+    const buff = fs.readFileSync(tmpFileOut)
+    fs.unlinkSync(tmpFileOut)
+    fs.unlinkSync(tmpFileIn)
+    return buff
+}
+
+async function videoToWebp (media) {
+    const tmpFileOut = path.join(tmpdir(), `${crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
+    const tmpFileIn = path.join(tmpdir(), `${crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.mp4`)
+    fs.writeFileSync(tmpFileIn, media)
+    await new Promise((resolve, reject) => {
+        ffmpeg(tmpFileIn)
+            .on("error", reject)
+            .on("end", () => resolve(true))
+            .addOutputOptions([
+                "-vcodec",
+                "libwebp",
+                "-vf",
+                "scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse",
+                "-loop",
+                "0",
+                "-ss",
+                "00:00:00",
+                "-t",
+                "00:00:05",
+                "-preset",
+                "default",
+                "-an",
+                "-vsync",
+                "0"
+            ])
+            .toFormat("webp")
+            .save(tmpFileOut)
+    })
+    const buff = fs.readFileSync(tmpFileOut)
+    fs.unlinkSync(tmpFileOut)
+    fs.unlinkSync(tmpFileIn)
+    return buff
+}
+
+  conn.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
+    let buffer
+    if (options && (options.packname || options.author)) {
+    buffer = await writeExifVid(buff, options)
+    } else {
+    buffer = await videoToWebp(buff)
+    }
+    await conn.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+    return buffer
+    }
   async function writeExifImg (media, metadata) {
     async function imageToWebp (media) {
       const tmpFileOut = path.join(tmpdir(), `${crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
