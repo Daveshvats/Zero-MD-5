@@ -1,7 +1,7 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   const prefixo = "/"
-  let mime = (q.msg || q).mimetype || q.mediaType || ""
 	const q = m.quoted ? m.quoted : m;
+  let mime = (q.msg || q).mimetype || q.mediaType || ""
   if (!q) return m.reply(`Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds`)
   if (/image/.test(mime)) {
   let media = await q.download()
