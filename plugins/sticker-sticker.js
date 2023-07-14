@@ -1,12 +1,14 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   const prefixo = "/"
-  if (!quoted) return m.reply(`Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds`)
+  
+	const q = m.quoted ? m.quoted : m;
+  if (!q) return m.reply(`Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds`)
   if (/image/.test(mime)) {
   let media = await q.download()
   let encmedia = await conn.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
   
   } else if (/video/.test(mime)) {
-  if ((quoted.msg || quoted).seconds > 11) return m.reply('Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds')
+  if ((q.msg || q).seconds > 11) return m.reply('Send/Reply Images/Videos/Gifs With Captions ${prefixo+command}\nVideo Duration 1-9 Seconds')
   let media = await q.download()
   let encmedia = await conn.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
   
