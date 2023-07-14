@@ -1,4 +1,5 @@
 import fs from "fs"
+import path from 'path'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   async function writeExifImg (media, metadata) {
     async function imageToWebp (media) {
