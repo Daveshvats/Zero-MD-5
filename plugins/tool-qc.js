@@ -50,10 +50,7 @@ if (!args[0] && !m.quoted) {
       headers: { "Content-Type": "application/json" },
     })
     const buffer = Buffer.from(quoteResponse.data.result.image, "base64")
-    conn.sendImageAsSticker(m.chat, buffer, m, {
-      packname: packname,
-      author: author,
-    })
+    conn.sendMessge(m.chat, {image:buffer})
   } catch (error) {
     console.error(error)
     m.reply('Error')
