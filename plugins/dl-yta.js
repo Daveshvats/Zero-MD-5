@@ -24,15 +24,7 @@ throw `*[❗] TO BE ABLE TO USE THIS COMMAND IN THIS WAY (${usedPrefix + command
 throw `*[❗] TO BE ABLE TO USE THIS COMMAND IN THIS WAY (${usedPrefix + command} <number>), PLEASE PERFORM THE VIDEO SEARCH WITH THE COMMAND ${usedPrefix}playlist <text>*`;
 }}}  
 await conn.sendMessage(m.chat, {text: `*_⏳Processing...⏳_*\n\n*`}, {quoted: m});
-try {
-let q = '128kbps'
-let v = youtubeLink
-const yt = await youtubedl(v).catch(async _ => await youtubedlv2(v))
-const dl_url = await yt.audio[q].download()
-const ttl = await yt.title
-const size = await yt.audio[q].fileSizeH
-await conn.sendFile(m.chat, dl_url, ttl + '.mp3', null, m, false, { mimetype: 'audio/mp4' })
-} catch {
+
 try {
 let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${lolkeysapi}&url=${youtubeLink}`)    
 let lolh = await lolhuman.json()
@@ -47,7 +39,7 @@ let ress = await ytdl.chooseFormat(infoo.formats, { filter: 'audioonly' })
 conn.sendMessage(m.chat, { audio: { url: ress.url }, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m }) 
 } catch {
 await conn.reply(m.chat, '*[❗] ERROR COULD NOT DOWNLOAD THE AUDIO*', m)}
-}}}
+}}
 handler.command = /^audio|fgmp3|dlmp3|getaud|yt(a|mp3)$/i
 handler.tags = ['dl']
 export default handler
