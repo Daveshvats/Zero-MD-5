@@ -7,7 +7,7 @@ let handler = async (m, { args, usedPrefix, command }) => {
     let err = `
 📌 *Example:*
 
-*${usedPrefix + command}* <idioma> [texto]
+*${usedPrefix + command}* <language> [text]
 *${usedPrefix + command}* en Hello World
 
 ≡ *List of supported languages:* 

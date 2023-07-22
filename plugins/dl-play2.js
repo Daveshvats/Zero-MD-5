@@ -9,7 +9,7 @@ let handler = async (m, { conn, text, args, isPrems, isOwner, usedPrefix, comman
   let res = await yts(text)
   //let vid = res.all.find(video => video.seconds < 3600)
   let vid = res.videos[0]
-  if (!vid) throw `✳️ Vídeo/Audio no encontrado`
+  if (!vid) throw `✳️ Vídeo/Audio not found`
   let isVideo = /vid$/.test(command)
   m.react('🎧') 
   
