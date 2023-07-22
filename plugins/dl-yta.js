@@ -26,7 +26,7 @@ throw `*[❗] TO BE ABLE TO USE THIS COMMAND IN THIS WAY (${usedPrefix + command
 await conn.sendMessage(m.chat, {text: `*_⏳Processing...⏳_*\n\n*`}, {quoted: m});
 
 try {
-let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${lolkeysapi}&url=${youtubeLink}`)    
+let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=BrunoSobrino_2&url=${youtubeLink}`)    
 let lolh = await lolhuman.json()
 let n = lolh.result.title || 'error'
 await conn.sendMessage(m.chat, { audio: { url: lolh.result.link }, fileName: `${n}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })  
