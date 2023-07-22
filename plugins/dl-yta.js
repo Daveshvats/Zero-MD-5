@@ -1,45 +1,27 @@
-import { youtubedl, youtubedlv2 } from '@bochilteam/scraper'
 import fetch from 'node-fetch'
-import yts from 'yt-search'
-import ytdl from 'ytdl-core'
-let handler = async (m, { text, conn, args, usedPrefix, command }) => {
-let lolkeysapi = ['BrunoSobrino_2']
-if (!args[0]) throw '*[❗𝐈𝐍𝐅𝐎❗] INSERT THE COMMAND PLUS THE LINK / LINK OF A YOUTUBE VIDEO*'
-let youtubeLink = '';
-if (args[0].includes('you')) {
-youtubeLink = args[0];
-} else {
-const index = parseInt(args[0]) - 1;
-if (index >= 0) {
-if (Array.isArray(global.videoList) && global.videoList.length > 0) {
-const matchingItem = global.videoList.find(item => item.from === m.sender);
-if (matchingItem) {
-if (index < matchingItem.urls.length) {
-youtubeLink = matchingItem.urls[index];
-} else {
-throw `*[❗] NO LINK FOUND FOR THAT NUMBER, PLEASE ENTER A NUMBER BETWEEN 1 AND ${matchingItem.urls.length}*`;
-}} else {
-throw `*[❗] TO BE ABLE TO USE THIS COMMAND IN THIS WAY (${usedPrefix + command} <number>), PLEASE PERFORM THE VIDEO SEARCH WITH THE COMMAND ${usedPrefix}playlist <text>*`;
-}} else {
-throw `*[❗] TO BE ABLE TO USE THIS COMMAND IN THIS WAY (${usedPrefix + command} <number>), PLEASE PERFORM THE VIDEO SEARCH WITH THE COMMAND ${usedPrefix}playlist <text>*`;
-}}}  
-await conn.sendMessage(m.chat, {text: `*_⏳Processing...⏳_*\n\n*`}, {quoted: m});
+import { youtube } from "@xct007/frieren-scraper";
 
-try {
-let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=BrunoSobrino_2&url=${youtubeLink}`)    
-let lolh = await lolhuman.json()
-let n = lolh.result.title || 'error'
-await conn.sendMessage(m.chat, { audio: { url: lolh.result.link }, fileName: `${n}.mp3`, mimetype: 'audio/mp4' }, { quoted: m })  
-} catch {   
-try {
-let searchh = await yts(youtubeLink)
-let __res = searchh.all.map(v => v).filter(v => v.type == "video")
-let infoo = await ytdl.getInfo('https://youtu.be/' + __res[0].videoId)
-let ress = await ytdl.chooseFormat(infoo.formats, { filter: 'audioonly' })
-conn.sendMessage(m.chat, { audio: { url: ress.url }, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m }) 
-} catch {
-await conn.reply(m.chat, '*[❗] ERROR COULD NOT DOWNLOAD THE AUDIO*', m)}
-}}
-handler.command = /^audio|fgmp3|dlmp3|getaud|yt(a|mp3)$/i
+let handler = async (m, { args, usedPrefix, command  }) => {
+  if (!args || !args[0]) return m.reply(`Input URL:\n${usedPrefix + command} https://www.youtube.com/watch?v=XYjVwg63Z7U`);
+  const data = await youtube.download(args[0])
+  if (data.error) return m.reply(`${data.message}`);
+  const { thumbnail, urls: _urls, title } = data
+  let urls, source, lastError
+  for (let i in _urls) {
+    try {
+      urls = _urls[i];
+      source = Buffer.from(await (await fetch(urls.url)).arrayBuffer())
+      if (Buffer.isBuffer(source)) break;
+    } catch (e) {
+      urls = source = null;
+      lastError = e;
+    }
+  }
+  if (!(Buffer.isBuffer(source))) return m.reply('Can\'t download video');
+  m.reply(new MessageMedia((await fileTypeFromBuffer(source)).mime, source.toString("base64")));
+}
+handler.help = ['youtube'].map(v => v + ` <url>`)
 handler.tags = ['dl']
-export default handler
+handler.command = /^(yt|youtube)(v|mp4)?$/i
+
+export default handler;
