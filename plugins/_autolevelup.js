@@ -14,7 +14,7 @@ export async function before(m, { conn }) {
 *▢ LEVEL UP*
 
 *${before}* ‣  *${user.level}*
-Rango : *${user.role}*
+Rank : *${user.role}*
 
 to deactivate write
 _*/off autolevelup*_
