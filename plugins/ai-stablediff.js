@@ -85,9 +85,11 @@ await m.reply("*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*")
 
 let inilogo4 = args.join(" ")
 let inilogo9 = args.join(" ")
+let inilogo6 = args.join(" ")
+var logo6 = inilogo6.split('|')[2]
 var logo4 = inilogo4.split('|')[0]
 var logo9 = inilogo9.split('|')[1]
-let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=paintings%2C%20sketches%2C%20(worst%20quality%3A2)%2C%20(low%20quality%3A2)%2C%20(normal%20quality%3A2)%2C%20lowres%2C%20normal%20quality%2C%20((monochrome))%2C%20((grayscale))%2C%20skin%20spots%2C%20acnes%2C%20skin%20blemishes%2C%20age%20spot%2C%20glans&width=576&height=1024&steps=25&model_id=${logo9}&sampler=UniPC&cfg=7.5&enhance_prompt=yes&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&hiresFix=no&lora_strength=1&clip_skip=2&tomesd=yes&use_karras_sigmas=yes&apikey=Rs-edgarsan`)
+let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=${logo6}&width=576&height=1024&steps=25&model_id=${logo9}&sampler=UniPC&cfg=7.5&enhance_prompt=yes&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&hiresFix=no&lora_strength=1&clip_skip=2&tomesd=yes&use_karras_sigmas=yes&apikey=Rs-edgarsan`)
 let kalu = await wife.json()
 let messd = `*Prompt* : ${kalu.result.metadata.prompt}.
 *Model* : ${kalu.result.metadata.model_id}.

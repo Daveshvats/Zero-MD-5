@@ -19,7 +19,7 @@ global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'd90a9e986e18778b',
   'https://zenzapis.xyz': '675e34de8a', 
-  'https://api-fgmods.ddns.net': 'fg-Zero'
+  'https://api-fgmods.ddns.net': 'HdEbz55G'
 }
 
 // Sticker WM

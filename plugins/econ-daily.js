@@ -1,7 +1,7 @@
 
 //import db from '../lib/database.js'
 
-const free = 5000
+const free = 2000
 const prem = 20000
 
 let handler = async (m, {conn, isPrems }) => {

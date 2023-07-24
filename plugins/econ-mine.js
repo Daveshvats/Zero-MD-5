@@ -2,7 +2,7 @@
 
 let handler = async (m, { conn }) => {
 
-  let hasil = Math.floor(Math.random() * 5000)
+  let hasil = Math.floor(Math.random() * 3000)
   let time = global.db.data.users[m.sender].lastmiming + 14400000
   if (new Date - global.db.data.users[m.sender].lastmiming < 14400000) throw `⏳ _Wait_ *${msToTime(time - new Date())}* _to return to the mine_`
   global.db.data.users[m.sender].exp += hasil
