@@ -89,9 +89,10 @@ let inilogo6 = args.join(" ")
 var logo6 = inilogo6.split('|')[2]
 var logo4 = inilogo4.split('|')[0]
 var logo9 = inilogo9.split('|')[1]
-let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=${logo6}&width=576&height=1024&steps=25&model_id=${logo9}&sampler=UniPC&cfg=7.5&enhance_prompt=yes&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&hiresFix=no&lora_strength=1&clip_skip=2&tomesd=yes&use_karras_sigmas=yes&apikey=Rs-edgarsan`)
+let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=${logo6}&width=576&height=1024&steps=25&model_id=${logo9}&sampler=UniPC&cfg=7.5&enhance_prompt=no&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&hiresFix=no&lora_strength=1&clip_skip=2&tomesd=yes&use_karras_sigmas=yes&apikey=Rs-edgarsan`)
 let kalu = await wife.json()
 let messd = `*Prompt* : ${kalu.result.metadata.prompt}.
+*NPrompt* : ${kalu.result.metadata.negative_prompt}.
 *Model* : ${kalu.result.metadata.model_id}.
 *Steps* : ${kalu.result.metadata.steps}.
 *Seed* : ${kalu.result.metadata.seed}.
