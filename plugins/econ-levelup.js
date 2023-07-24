@@ -11,7 +11,7 @@ let handler = async (m, { conn }) => {
 ▢ Name : *${name}*
 ▢ Level : *${user.level}*
 ▢ XP : *${user.exp - min}/${xp}*
-▢ Range : *${user.role}*
+▢ Rank : *${user.role}*
 └──────────────
 
 You need *${max - user.exp}* of *XP* to level up
@@ -24,7 +24,7 @@ try {
     avatar: pp,
     level: user.level,
     ranklog: 'https://i.ibb.co/7gfnyMw/gold.png',
-    background: 'https://i.ibb.co/CsNgBYw/qiyana.jpg'
+    background: 'https://i.ibb.co/pJFbNTD/back.jpg'
 }, 'apikey')
 
     conn.sendFile(m.chat, imgg, 'level.jpg', txt, m)
@@ -41,7 +41,7 @@ try {
 ┌─⊷ *LEVEL UP*
 ▢ Previous level : *${before}*
 ▢ Current level : *${user.level}*
-▢ Range : *${user.role}*
+▢ Rank : *${user.role}*
 └──────────────
 
 *_The more you interact with the bots, the higher your level will be_*
