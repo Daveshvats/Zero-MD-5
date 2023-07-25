@@ -487,8 +487,8 @@ export async function participantsUpdate({ id, participants, action }) {
                             let memno = groupMetadata.participants.length
                             let groupnaam = await this.getName(id)
                             let bgrip = "https://i.ibb.co/Hn8BRyv/back.jpg"
-                            let wel = `https://api.lolhuman.xyz/api/base/welcome?apikey=BrunoSobrino_2&img1=${pp}&img2=${ppgp}&background=${bgrip}&username=${usernaam}&member=${memno}&groupname=${groupnaam}`
-
+                            //let wel = `https://api.lolhuman.xyz/api/base/welcome?apikey=BrunoSobrino_2&img1=${pp}&img2=${ppgp}&background=${bgrip}&username=${usernaam}&member=${memno}&groupname=${groupnaam}`
+                              let wel = `https://api.lolhuman.xyz/api/welcomeimage?apikey=BrunoSobrino_2&img=${pp}&text=${usernaam}`
                             let lea = API('fgmods', '/api/goodbye', {
                                 username: await this.getName(user),
                                 groupname: await this.getName(id),
