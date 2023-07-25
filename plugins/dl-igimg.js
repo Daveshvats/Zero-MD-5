@@ -3,7 +3,8 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
     m.react(rwait)
    let zero1 = await fetch(`https://api.itsrose.life/downloader/ig?url=${args[0]}&apikey=Rs-edgarsan`)
    let zeroh = await zero1.json()
-   conn.sendMessage(m.chat,{image:{url:zeroh.result.url}}, m)
+   let zero = await fetch(zeroh.result.url)
+   conn.sendMessage(m.chat,{image:{url:zero}}, m)
     m.react(done)
 }
 handler.help = ['igimg <link ig>']
