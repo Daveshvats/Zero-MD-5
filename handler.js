@@ -489,14 +489,7 @@ export async function participantsUpdate({ id, participants, action }) {
                             let bgrip = "https://i.ibb.co/Hn8BRyv/back.jpg"
                             //let wel = `https://api.lolhuman.xyz/api/base/welcome?apikey=BrunoSobrino_2&img1=${pp}&img2=${ppgp}&background=${bgrip}&username=${usernaam}&member=${memno}&groupname=${groupnaam}`
                               let wel = `https://api.lolhuman.xyz/api/welcomeimage?apikey=BrunoSobrino_2&img=${pp}&text=${usernaam} Member no. ${memno}`
-                            let lea = API('fgmods', '/api/goodbye', {
-                                username: await this.getName(user),
-                                groupname: await this.getName(id),
-                                groupicon: ppgp,
-                                membercount: groupMetadata.participants.length,
-                                profile: pp,
-                                background: 'https://i.imgur.com/klTSO3d.jpg'
-                            }, 'apikey')
+                            let lea = `https://api.lolhuman.xyz/api/welcomeimage?apikey=BrunoSobrino_2&img=${pp}&text=${usernaam} Member no. ${memno}`
                         this.sendFile(id, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, { mentions: [user] })
                         /*this.sendButton(id, text, fgig, action === 'add' ? wel : lea, [
                              [(action == 'add' ? '⦙☰ MENU' : 'BYE'), (action == 'add' ? '/help' : 'khajs')], 
