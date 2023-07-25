@@ -481,17 +481,13 @@ export async function participantsUpdate({ id, participants, action }) {
                         pp = await this.profilePictureUrl(user, 'image')
                         ppgp = await this.profilePictureUrl(id, 'image')
                         } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Desconocido') :
+                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'A stranger') :
                             (chat.sBye || this.bye || conn.bye || 'Bye, @user')).replace('@user', '@' + user.split('@')[0])
-                         
-                            let wel = API('fgmods', '/api/welcome', {
-                                username: await this.getName(user),
-                                groupname: await this.getName(id),
-                                groupicon: ppgp,
-                                membercount: groupMetadata.participants.length,
-                                profile: pp,
-                                background: 'https://i.imgur.com/bbWbASn.jpg'
-                            }, 'apikey')
+                            let usernaam = await this.getName(user)
+                            let memno = groupMetadata.participants.length
+                            let groupnaam = await this.getName(id)
+                            let bgrip = "https://i.ibb.co/Hn8BRyv/back.jpg"
+                            let wel = `https://api.lolhuman.xyz/api/base/welcome?apikey=BrunoSobrino_2&img1=${pp}&img2=${ppgp}&background=${bgrip}&username=${usernaam}&member=${memno}&groupname=${groupnaam}`
 
                             let lea = API('fgmods', '/api/goodbye', {
                                 username: await this.getName(user),

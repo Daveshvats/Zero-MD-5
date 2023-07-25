@@ -6,7 +6,8 @@ let handler = async(m, { conn, usedPrefix, command }) => {
 you can donate if you want to help keep the bot active
 
 ▢ *PayPal*
-• *Link :* https://paypal.me/Dvats05
+• *Link 1 :* https://paypal.me/Dvats05
+• *Link 2:* https://paypal.me/edgarkyner
 
 `
 let img = 'https://i.ibb.co/37FP2bk/donate.jpg'
