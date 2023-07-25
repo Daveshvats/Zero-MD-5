@@ -190,7 +190,7 @@ const listMessage = {
 }
 
 m.reply(`
-✅ *${type}* Is *${isEnable ? 'Activated' : 'Deactivated'}* ${isAll ? 'pear is bot' : isUser ? '' : 'para is chat'}
+✅ *${type}* Is *${isEnable ? 'Activated' : 'Deactivated'}* ${isAll ? 'pear is bot' : isUser ? '' : 'in the chat'}
 `.trim()) 
 
 }
