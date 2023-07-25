@@ -9,9 +9,9 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
     await conn.sendFile(m.chat, videoig, 'error.mp4', txt1, m)  
     m.react(done)
 }
-handler.help = ['igvid <link ig>']
+handler.help = ['igdl <link ig>']
 handler.tags = ['dl']
-handler.command = ['ig','igvid'] 
+handler.command = ['ig','igvid','igdl','instagram'] 
 handler.diamond = true
 
 export default handler 
