@@ -20,7 +20,7 @@ try {
     let sode = user.exp - min
     let bgsjd = 'https://i.ibb.co/pJFbNTD/back.jpg'
     let imgg = `https://api.lolhuman.xyz/api/rank?apikey=BrunoSobrino_2&img=${pp}&background=${bgsjd}&username=${name}&level=${user.level}&ranking=${user.role}&currxp=${user.exp - min}&xpneed=${xp}`
-    conn.sendMessage(m.chat, {image:{url:imgg}}, m)
+    conn.sendMessage(m.chat, {image:{url:imgg}, caption:txt} , m)
 } catch (e) {
     m.reply(txt)
 }
