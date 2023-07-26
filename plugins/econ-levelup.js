@@ -17,16 +17,8 @@ let handler = async (m, { conn }) => {
 You need *${max - user.exp}* of *XP* to level up
 `.trim()
 try {
-  let imgg = API('fgmods', '/api/maker/rank', {
-    username: name,
-    xp: user.exp - min,
-    exp: xp,
-    avatar: pp,
-    level: user.level,
-    ranklog: 'https://i.ibb.co/bP0pwS3/fasf-rw.png',
-    background: 'https://i.ibb.co/pJFbNTD/back.jpg'
-}, 'apikey')
-
+    let background = 'https://i.ibb.co/pJFbNTD/back.jpg'
+    let imgg = `https://api.lolhuman.xyz/api/rank?apikey=BrunoSobrino_2&img=${pp}&background=${background}&username=${name}&level=${user.level}&ranking=N/A&currxp=${user.exp}&xpneed=${min}`
     conn.sendFile(m.chat, imgg, 'level.jpg', txt, m)
 } catch (e) {
     m.reply(txt)
