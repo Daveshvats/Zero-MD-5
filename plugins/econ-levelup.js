@@ -18,9 +18,9 @@ You need *${max - user.exp}* of *XP* to level up
 `.trim()
 try {
     let sode = user.exp - min
-    let background = 'https://i.ibb.co/pJFbNTD/back.jpg'
-    let imgg = `https://api.lolhuman.xyz/api/rank?apikey=BrunoSobrino_2&img=${pp}&background=${background}&username=${name}&level=${user.level}&ranking=N/A&currxp=${sode}&xpneed=${xp}`
-    conn.sendFile(m.chat, imgg, 'level.jpg', txt, m)
+    let bgsjd = 'https://i.ibb.co/pJFbNTD/back.jpg'
+    let imgg = `https://api.lolhuman.xyz/api/rank?apikey=BrunoSobrino_2&img=${pp}&background=${bgsjd}&username=${name}&level=${user.level}&ranking=${user.role}&currxp=${user.exp - min}&xpneed=${xp}`
+    conn.sendMessage(m.chat, {image:{url:imgg}}, m)
 } catch (e) {
     m.reply(txt)
 }
