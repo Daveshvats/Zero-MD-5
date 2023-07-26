@@ -52,7 +52,7 @@ let handler = async (m, { args, usedPrefix, command, conn }) => {
     end = `✨ *WHAT A PRO!! YOU WON +${apuesta + apuesta} EXP*\n\n🥳 *COOL!! YOU JUST WON +${apuesta + apuesta} EXP*`
 users.exp += apuesta
 } else if (a == b || a == c || b == c) {
-end = `🙀 *ALMOST!!, TRY AGAIN*\n*BONDS OF +50 EXP*\n\n😯 *ALMOST!!, TRY AGAIN*\n*BONDS OF +50 EXP*`
+end = `😯 *ALMOST!!, TRY AGAIN*\n*BONDS OF +50 EXP*`
 users.exp += 50
 } else {
 end = `😿 *HAS LOST!! ❌ -${apuesta} EXP*\n\n*HAS LOST!! ❌ -${apuesta} EXP*`

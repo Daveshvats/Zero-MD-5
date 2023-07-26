@@ -76,5 +76,5 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 handler.help = ['play'].map((v) => v + ' <query>');
 handler.tags = ['dl'];
 handler.command = /^play$/i;
-
+handler.diamond = true
 export default handler;
