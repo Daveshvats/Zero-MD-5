@@ -17,7 +17,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (text == astro) {
       global.db.data.users[m.sender].exp += 100
-        m.reply(`▢ *Empath*\n\n‣ You : ${text}\n‣ Zero : ${astro}\n\n🎁 Points (±)100 XP`)
+        m.reply(`▢ *Results*\n\n‣ You : ${text}\n‣ Zero : ${astro}\n\n🎁 Points (±)100 XP`)
     } else if (text == 'stone') {
         if (astro == 'scissors') {
             global.db.data.users[m.sender].exp += 300
