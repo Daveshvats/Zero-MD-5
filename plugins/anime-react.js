@@ -6,7 +6,8 @@ const {tmpdir} = os
 import axios from 'axios'
 import ffmpeg from 'fluent-ffmpeg'
 import webp from 'node-webpmux'
-let handler = async (m, { conn, text, command }) => {
+import { buffergif, fetchJson, fetchBuffer } from '../lib/myfunc'
+let handler = async (m, { conn, text, command, mentionByTag}) => {
     async function writeExifVid (media, metadata) {
         let wMedia = await videoToWebp(media)
         const tmpFileIn = path.join(tmpdir(), `${crypto.randomBytes(6).readUIntLE(0, 6).toString(36)}.webp`)
@@ -181,9 +182,23 @@ let handler = async (m, { conn, text, command }) => {
           const capitalize = (content) => `${content.charAt(0).toUpperCase()}${content.slice(1)}`
         const reactionList = `🎃 *Available Reactions:*\n\n- ${reactions.map((reaction) => capitalize(reaction)).join('\n- ')}\n🛠️ *Usage:* /reaction (reaction) [tag/quote user] | /(reaction) [tag/quote user]\nExample: /pat`
 if (!text) return m.reply(reactionList)
-let waifu = await fetch(`https://api.waifu.pics/sfw/${text}`)
-let loda = waifu.json()
-conn.sendImageAsSticker(m.chat, loda.url, m, { packname: global.packname, author: global.author })
+const users = mentionByTag
+if (m.quoted && !users.includes(m.quoted.sender)) users.push(m.quoted.sender)
+while (users.length < 1) users.push(m.sender)
+const single = reactant === m.sender
+const reactant = users[0]
+const { url } = await fetchJson(`https://api.waifu.pics/sfw/${reaction}`)
+const result = await fetchBuffer(url);
+const buffer = await buffergif(result);
+await conn.sendMessage(m.from, {
+    video: buffer,
+    gifPlayback: true,
+    caption: `*@${m.sender.split('@')[0]} ${suitableWords[reaction]} ${single ? 'Themselves' : `@${reactant.split('@')[0]}`}*`,
+    mentions: [m.sender, reactant],
+}, { quoted: m });
+//let waifu = await fetch(`https://api.waifu.pics/sfw/${text}`)
+//let loda = waifu.json()
+//conn.sendImageAsSticker(m.chat, loda.url, m, { packname: global.packname, author: global.author })
 } 
 
 handler.help = ['react']
