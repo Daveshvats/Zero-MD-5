@@ -34,11 +34,8 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
   • dance
   • cringe
   • blush`)
-  let wm = 'Zero'
           let images = `https://api.lolhuman.xyz/api/random/${text}?apikey=BrunoSobrino_2`
-          await conn.sendButton(m.chat, `${m.sender} ${text} ${who}`, wm, images, [
-                  ['Next', `${usedPrefix}${command}`]
-              ], m)
+          await conn.sendFile(m.chat, images, 'error.jpg', `${m.sender} ${text} ${who}`, m, false, images,{ mentions: [who] })
   }
   handler.help = ['react'].map(v => v + ' <reaction>')
   handler.tags = ['anime']
