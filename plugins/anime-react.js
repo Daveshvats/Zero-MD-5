@@ -251,8 +251,8 @@ if (command = 'shinobu'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${
  conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
 } 
 }
-handler.help = ['diffme']
-handler.tags = ['ai']
+handler.help = ['react']
+handler.tags = ['anime']
 handler.command = ['cry','kill','hug','pat','lick',
 'kiss','bite','yeet','bully','bonk','wink','poke','nom','slap','smile',
 'wave','awoo','blush','smug','glomp',
