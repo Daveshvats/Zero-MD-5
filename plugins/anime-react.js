@@ -170,13 +170,23 @@ let handler = async (m, { conn, text, command }) => {
         return response
         })
         }
-axios.get(`https://api.waifu.pics/sfw/${command}`)
-.then(({data}) => {
-conn.sendImageAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
-})
+        const suitableWords = {
+            bite: 'Bit', blush: 'Blushed at', bonk: 'Bonked', bully: 'Bullied', cringe: 'Cringed at',
+            cry: 'Cried in front of', cuddle: 'Cuddled', dance: 'Danced with', glomp: 'Glomped at', handhold: 'Held the hands of', happy: 'is Happied with',
+            highfive: 'High-fived', hug: 'Hugged', kick: 'Kicked', kill: 'Killed', kiss: 'Kissed', lick: 'Licked',
+            nom: 'Nomed', pat: 'Patted', poke: 'Poked', slap: 'Slapped', smile: 'Smiled at', smug: 'Smugged',
+            wave: 'Waved at', wink: 'Winked at', yeet: 'Yeeted at'
+          };
+          const reactions = Object.keys(suitableWords)
+          const capitalize = (content) => `${content.charAt(0).toUpperCase()}${content.slice(1)}`
+        const reactionList = `🎃 *Available Reactions:*\n\n- ${reactions.map((reaction) => capitalize(reaction)).join('\n- ')}\n🛠️ *Usage:* /reaction (reaction) [tag/quote user] | /(reaction) [tag/quote user]\nExample: /pat`
+if (!text) return m.reply(reactionList)
+let waifu = await fetch(`https://api.waifu.pics/sfw/${text}`)
+let loda = waifu.json()
+conn.sendImageAsSticker(m.chat, loda.url, m, { packname: global.packname, author: global.author })
 } 
 
 handler.help = ['react']
 handler.tags = ['anime']
-handler.command = ['cry']
+handler.command = ['react']
 export default handler
