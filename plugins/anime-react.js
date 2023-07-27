@@ -165,90 +165,90 @@ let handler = async (m, { conn, text, command }) => {
         }
 if (command = 'cry'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'kill'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'hug'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'pat'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'lick'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } 
 if (command = 'kiss'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'bite'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'yeet'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'bully'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'bonk'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 }
 if (command = 'wink'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'poke'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'nom'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'slap'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'smile'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } 
 if (command = 'wave'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'awoo'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'blush'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'smug'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'glomp'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } 
 if (command = 'happy'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'dance'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'cringe'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'cuddle'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'highfive'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } 
 if (command = 'shinobu'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } if (command = 'handhold'){ let waifu = await fetch(`https://api.waifu.pics/sfw/${command}`)
  let goku = waifu.json
- conn.sendImageAsSticker(from, goku.url, m, { packname: global.packname, author: global.author })
+ conn.sendImageAsSticker(m.chat, goku.url, m, { packname: global.packname, author: global.author })
 } 
 }
 handler.help = ['react']
