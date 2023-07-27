@@ -18,10 +18,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!rpat.ok) throw await rpat.text()
    let json = await rpat.json()
    let { url } = json
-   let stiker = await sticker(null, url, `(${name2}) caress to`, `${name}`)
+   let stiker = await sticker(null, url, `Zero`, `bot`)
    conn.sendFile(m.chat, stiker, null, { asSticker: true }, m)
    m.react('☺️') 
-   
+   m.reply(`${name2} pat's ${name}`)
 }
 
 handler.help = ['pat @tag']
