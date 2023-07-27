@@ -26,7 +26,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['yeet @tag']
 handler.tags = ['rnime']
-handler.command = /^(slap|bofetada)$/i
+handler.command = /^(yeet|yeeted)$/i
 handler.diamond = true
 handler.group = true
 
