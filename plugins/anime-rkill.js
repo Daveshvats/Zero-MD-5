@@ -20,10 +20,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!rki.ok) throw await rki.text()
    let jkis = await rki.json()
    let { url } = jkis
-   let stiker = await sticker(null, url, `(${name2}) killed`, `${name}`)
+   let stiker = await sticker(null, url, `zero`, `bot`)
    conn.sendFile(m.chat, stiker, null, { asSticker: true }, m)
    m.react('🗡️') 
-   
+   m.reply(`${name2} killed ${name}`)
 }
 
 handler.help = ['kill @tag']
