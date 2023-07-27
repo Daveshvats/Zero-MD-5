@@ -2,7 +2,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
     let who
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
     else who = m.chat
-    if (!who) throw `✳️ Tag or mention someone\n\n📌 Example : ${usedPrefix + command} @user`
+    if (!who) who == m.sender 
     if (!text) return m.reply(`Example : ${usedPrefix + command} cuddle
     *List Reaction:*
   • bully
