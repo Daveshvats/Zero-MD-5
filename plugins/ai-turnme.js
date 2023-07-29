@@ -36,7 +36,6 @@ let handler = async (m, { conn,text }) => {
 				    image_num: 1,
                     width: 648,
                     height: 864,
-                    json:true,
 					apikey: "Rs-edgarsan",
 				},
 			})
