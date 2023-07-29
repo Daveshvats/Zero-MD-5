@@ -24,42 +24,41 @@ let handler = async (m, { conn,text }) => {
     let data2 = await q.download()
     let image = await uploadImage(data2)
    const styles = [`${text}`];
-   for (const [index, style] of styles.entries()) {
-    const { data, status: statusCode } = await axios
-			.request({
-				baseURL: "https://api.itsrose.life", // "https://api.itsrose.site"
-				url: "/image/turnMe",
-				method: "POST",
-				params: {
-                    init_image:image,
-					style,
-				    image_num: "1",
-                    width: "648",
-                    height: "864",
-					apikey: "Rs-edgarsan",
-				},
-			})
-			.catch((e) => e?.response);
-		const { status, result, message, metadata } = data;
+   const baseURL = 'https://api.itsrose.life/image/turnMe'
+  const apikey = 'Rs-edgarsan'
 
-		if (!status) {
-			await conn.sendMessage(
-				m.chat,
-				{
-					text: "Generating Stop",
-				},
-				{ quoted: m }
-			);
-			break;
-		}
-		const messd = `style: ${metadata.style}`
+  const config = {
+    headers: {
+      'accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    data: {
+      'init_image': `${image}`,
+      "style": `${text}`,
+      "image_num": 1,
+      "width": 648,
+      "height": 864
+    },
+    params: {
+      apikey
+    }
+  }
+
+  try {
+    const resd = await axios.post(baseURL, config);
+    console.log(resd);
+    const messd = `style: ${resd.metadata.style}`
 		// Send the base64 image to conn.
 		await conn.sendMessage(
 			m.chat,
-			{ image:{url:`${result.images}`},caption:`${messd}`},
+			{ image:{url:`${resd.result.images}`},caption:`${messd}`},
 			{ quoted: m }
 		);
-        }}
+  } catch (error) {
+    console.log(error);
+  }
+		
+        }
     handler.help = ['turnme']
     handler.tags = ['ai']
     handler.command = ['turnme']
