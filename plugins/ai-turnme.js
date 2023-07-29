@@ -33,9 +33,9 @@ let handler = async (m, { conn,text }) => {
 				params: {
                     init_image:image,
 					style,
-				    image_num: 1,
-                    width: 648,
-                    height: 864,
+				    image_num: "1",
+                    width: "648",
+                    height: "864",
 					apikey: "Rs-edgarsan",
 				},
 			})
