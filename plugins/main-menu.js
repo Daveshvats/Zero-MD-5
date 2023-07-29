@@ -11,7 +11,6 @@ let tags = {
 'econ': 'LEVEL and ECONOMY',
 'rg': 'REGISTER',
 'sticker': 'STICKER',
-'img': 'IMAGEN',
 'maker': 'MAKER',
 'prem': 'PREMIUM',
 'group': 'GROUP',
