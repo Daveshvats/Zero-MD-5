@@ -54,7 +54,7 @@ let handler = async (m, { conn,text }) => {
 			);
 			break;
 		}
-		const messd = `style: ${metadata.style}`
+		const messd = `style: ${text}`
 		// Send the base64 image to conn.
 		await conn.sendMessage(
 			m.chat,
