@@ -40,7 +40,7 @@ let handler = async (m, { conn,text }) => {
       "height": 864
     },
     params: {
-      apikey
+      apikey:'Rs-edgarsan'
     }
   }
 
