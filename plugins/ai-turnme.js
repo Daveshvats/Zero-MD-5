@@ -4,7 +4,10 @@ let handler = async (m, { conn,text }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ""
     if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command /prompt !`)
-    if (!text) m.reply(`Please Give a style
+    if (!/image\/(jpe?g|png)/.test(mime)) {
+		return m.reply(`Unsupported file!`);
+	}
+    if (!text) return m.reply(`Please Give a style
     list of styles : 
     "anime",
     "pixar",
