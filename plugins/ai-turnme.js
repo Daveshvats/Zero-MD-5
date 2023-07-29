@@ -39,7 +39,6 @@ let handler = async (m, { conn,text }) => {
                     json:true,
 					apikey: "Rs-edgarsan",
 				},
-				data: form,
 			})
 			.catch((e) => e?.response);
 		const { status, result, message, metadata } = data;
