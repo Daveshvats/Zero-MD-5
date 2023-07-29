@@ -12,5 +12,5 @@ let handler = async (m, { conn }) => {
     handler.help = ['prompter']
     handler.tags = ['ai']
     handler.command = ['prompt']
-    
+    handler.diamond = true
     export default handler
