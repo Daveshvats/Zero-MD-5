@@ -1,5 +1,5 @@
 
-let handler = async (m, { conn,text }) => {
+let handler = async (m, { conn,text,lora_model }) => {
 const body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 const args = body.trim().split(/ +/).slice(1)
 if (!text) return m.reply ('*Please provide a query and a model to use* for example /stablediff potrait of a girl = prompt | dream_shaper = model or any other model | negative promp what you dont want in the image')
@@ -94,11 +94,12 @@ let inilogo6 = args.join(" ")
 var logo6 = inilogo6.split('|')[2]
 var logo4 = inilogo4.split('|')[0]
 var logo9 = inilogo9.split('|')[1]
-let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=${logo6}&width=576&height=1024&steps=25&model_id=${logo9}&sampler=UniPC&cfg=7.5&enhance_prompt=no&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&hiresFix=no&lora_strength=1&clip_skip=2&tomesd=yes&use_karras_sigmas=yes&apikey=Rs-edgarsan`)
+let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=${logo6}&width=576&height=1024&steps=30&model_id=${logo9}&sampler=UniPC&cfg=7.5&enhance_prompt=no&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&hiresFix=no&lora_model=${lora_model}&lora_strength=1&clip_skip=2&tomesd=yes&use_karras_sigmas=yes&apikey=Rs-edgarsan`)
 let kalu = await wife.json()
 let messd = `*Prompt* : ${kalu.result.metadata.prompt}.
 *NPrompt* : ${kalu.result.metadata.negative_prompt}.
 *Model* : ${kalu.result.metadata.model_id}.
+*Lora_model* : ${kalu.result.metadata.lora}.
 *Steps* : ${kalu.result.metadata.steps}.
 *Seed* : ${kalu.result.metadata.seed}.
 *Height* : ${kalu.result.metadata.H}.
