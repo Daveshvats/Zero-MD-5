@@ -2,8 +2,8 @@ import formData from "form-data"
 import axios from "axios"
 let handler = async (m, { conn,text }) => {
 conn.differentMe = conn.differentMe ? conn.differentMe : {};
-let buru = `Models:
-Please provide a style here is the list of styles "color_line",
+let buru = `Please provide a style here is the list of styles 
+"color_line",
 "fresh",
 "makima",
 "cat_ears",
@@ -108,5 +108,5 @@ Please provide a style here is the list of styles "color_line",
     handler.help = ['diffme']
     handler.tags = ['ai']
     handler.command = ['diffme']
-	handler.premium = true
+	handler.diamond = true
     export default handler
