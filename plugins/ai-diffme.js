@@ -67,8 +67,8 @@ var texts = [
 'anime_idol'},{
     'title':
 'azure_sky'}]
-if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈𝐍𝐅𝐎❗] The style ${text} does not exist*`;
-let buru = `Please provide a style here is the list of styles 
+if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈𝐍𝐅𝐎❗] The style ${text} does not exist* Choose from these ${buru}`;
+let buru = ` 
 "color_line",
 "fresh",
 "makima",
