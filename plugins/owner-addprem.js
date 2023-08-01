@@ -24,6 +24,6 @@ handler.tags = ['owner']
 handler.command = ['addprem', 'addpremium'] 
 
 handler.group = true
-handler.rowner = true
+handler.mods = true
 
 export default handler

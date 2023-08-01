@@ -1,7 +1,7 @@
 
-let handler = async (m, { conn, text, usedPrefix, command, args, participants, isOwner }) => {
+let handler = async (m, { conn, text, usedPrefix, command, args, participants, isMods}) => {
 	
-   if (!isOwner) return conn.reply(m.chat, `*Invite bot to a group*\n\nHello @${m.sender.split('@')[0]}\nyou can rent the bot to join a group`.trim(), m, { mentions: [m.sender] })
+   if (!isMods) return conn.reply(m.chat, `*Invite bot to a group*\n\nHello @${m.sender.split('@')[0]}\nyou can rent the bot to join a group`.trim(), m, { mentions: [m.sender] })
 	
   let time = global.db.data.users[m.sender].lastjoin + 86400000
   let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i

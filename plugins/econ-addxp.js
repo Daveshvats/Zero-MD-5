@@ -25,7 +25,7 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['addxp <@user>']
 handler.tags = ['econ']
 handler.command = ['addxp'] 
-handler.rowner = true
+handler.mods = true
 
 export default handler
 
