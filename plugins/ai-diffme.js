@@ -2,6 +2,72 @@ import formData from "form-data"
 import axios from "axios"
 let handler = async (m, { conn,text }) => {
 conn.differentMe = conn.differentMe ? conn.differentMe : {};
+text = text.toLowerCase();
+
+var texts = [
+    { 'title':
+'color_line'},{
+    'title':
+'fresh'},{
+    'title':
+'makima'},{
+    'title':
+'cat_ears'},{
+    'title':
+'full_bloom'},{
+    'title':
+'angel'},{
+    'title':
+'gracefull'},{
+    'title':
+'cold'},{
+    'title':
+'snow_fall'},{
+    'title':
+'manga'},{
+    'title':
+'charming'},{
+    'title':
+'stipple'},{
+    'title':
+'cg'},{
+    'title':
+'idol'},{
+    'title':
+'comic_world'},{
+    'title':
+'princess'},{
+    'title':
+'anime25d'},{
+    'title':
+'realistic'},{
+    'title':
+'anime'},{
+    'title':
+'comic'},{
+    'title':
+'manhwa'},{
+    'title':
+'manhwa_female'},{
+    'title':
+'manhwa_male'},{
+    'title':
+'jewelry'},{
+    'title':
+'jewelry_sky'},{
+    'title':
+'basketball'},{
+    'title':
+'summer'},{
+    'title':
+'cute_child'},{
+    'title':
+'makeup_sunny'},{
+    'title':
+'anime_idol'},{
+    'title':
+'azure_sky'}]
+if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈𝐍𝐅𝐎❗] The style ${text} does not exist*`;
 let buru = `Please provide a style here is the list of styles 
 "color_line",
 "fresh",
@@ -34,7 +100,7 @@ let buru = `Please provide a style here is the list of styles
 "makeup_sunny",
 "anime_idol",
 "azure_sky" `
-    if (!text) return m.reply(`Please provide a style here is the list of styles ${buru}`)
+    if (!text) { return m.reply(`Please provide a style here is the list of styles ${buru}`)}
 	if (m.sender in conn.differentMe) {
 		return m.reply("Please wait, you have undone job.");
 	}
@@ -108,5 +174,4 @@ let buru = `Please provide a style here is the list of styles
     handler.help = ['diffme']
     handler.tags = ['ai']
     handler.command = ['diffme']
-	handler.diamond = true
     export default handler
