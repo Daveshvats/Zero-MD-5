@@ -82,8 +82,8 @@ let handler = async (m, { conn,text }) => {
     "dark_theme"`
 if (text) {
     global.db.data.chats[m.chat].lora_model = text
-    m.reply('✅ Lora_model set')
-  } else throw `✳️ Enter the Model List of models ${buru}\n@user (mention)`
+    m.reply(`✅ Lora_model set ${text}`)
+  } else throw `✳️ Enter the Model From List of models ${buru}\n@user (mention)`
 }
 handler.help = ['setlora <text>']
 handler.tags = ['ai']

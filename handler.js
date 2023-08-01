@@ -113,6 +113,8 @@ export async function handler(chatUpdate) {
                     chat.sDemote = ''
                 if (!('lora_model' in chat))
                     chat.lora_model = ''
+                if (!('model_id' in chat))
+                    chat.model_id = 'dream_shaper'
                 if (!('delete' in chat))
                     chat.delete = true
                 if (!('antiLink' in chat))
@@ -142,6 +144,7 @@ export async function handler(chatUpdate) {
                     nsfw: false, 
                     expired: 0,
                     lora_model: '',
+                    model_id:'',
                 }
             let settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}

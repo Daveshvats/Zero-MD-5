@@ -67,7 +67,6 @@ var texts = [
 'anime_idol'},{
     'title':
 'azure_sky'}]
-if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈𝐍𝐅𝐎❗] The style ${text} does not exist* Choose from these ${buru}`;
 let buru = ` 
 "color_line",
 "fresh",
@@ -100,6 +99,8 @@ let buru = `
 "makeup_sunny",
 "anime_idol",
 "azure_sky" `
+if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈𝐍𝐅𝐎❗] The style ${text} does not exist* Choose from these ${buru}`;
+
     if (!text) { return m.reply(`Please provide a style here is the list of styles ${buru}`)}
 	if (m.sender in conn.differentMe) {
 		return m.reply("Please wait, you have undone job.");
