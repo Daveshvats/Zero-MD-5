@@ -111,6 +111,8 @@ export async function handler(chatUpdate) {
                     chat.sPromote = ''
                 if (!('sDemote' in chat))
                     chat.sDemote = ''
+                if (!('lora_model' in chat))
+                    chat.lora_model = ''
                 if (!('delete' in chat))
                     chat.delete = true
                 if (!('antiLink' in chat))
@@ -139,6 +141,7 @@ export async function handler(chatUpdate) {
                     onlyLatinos: false,
                     nsfw: false, 
                     expired: 0,
+                    lora_model: '',
                 }
             let settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
