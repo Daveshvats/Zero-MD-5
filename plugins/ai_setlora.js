@@ -88,4 +88,4 @@ if (text) {
 handler.help = ['setlora <text>']
 handler.tags = ['ai']
 handler.command = ['setlora','loramodel','lora'] 
-
+export default handler
