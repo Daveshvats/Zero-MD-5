@@ -52,7 +52,8 @@ let infobt = `
 ▢ *${chats.length}* Total Chats
 
 *≡ OWNER*
-  *GHOST*
+  *DAVESH*
+▢ WhatsApp : wa.me/917404854406
  *≡ MODERATORS*
   *KAKYOIN*
 ▢ WhatsApp : wa.me/573003329972
