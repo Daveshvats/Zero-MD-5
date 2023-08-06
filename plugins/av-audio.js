@@ -19,5 +19,5 @@ let audioMsg = {
   'Good afternoon': 'https://i.top4top.io/m_2646qxac91.mp3',
   'good night': 'https://h.top4top.io/m_26460eg6v1.mp3',
   'sad': 'https://h.top4top.io/m_2474fhcbh1.mp3',
-  '@919466021387': 'https://l.top4top.io/m_2492i4mdu1.mp3'
+  '@919466021387': 'https://link.storjshare.io/jwcinkzxdwd5b4citypz522w7pnq/zero%2Fy2mate.com%20-%20Hello%20Everynyancatsofinstagram%20catscatstagraminstacat%20kittyanimemangaart%20otakuanime%20manga.mp3'
 }
