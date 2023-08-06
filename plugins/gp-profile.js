@@ -9,7 +9,7 @@ let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.m
 if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => './src/avatar_contact.png')
 let user = global.db.data.users[who]
-let { name, exp, diamond, lastclaim, registered, regTime, age, level, role, warn } = global.db.data.users[who]
+let { name, exp, diamond, lastclaim, registered, premium,regTime, age, level, role, warn } = global.db.data.users[who]
 let { min, xp, max } = xpRange(user.level, global.multiplier)
 let username = conn.getName(who)
 let math = max - xp
@@ -26,10 +26,10 @@ let str = `
 ▢ *⚠️Warnings:* ${warn}/${maxwarn}
 ▢ *💎 Diamonds :* ${diamond}
 ▢ *🆙 Level* : ${level}
-▢ *⬆️ XP* : Total ${exp} (${user.exp - min} / ${xp})\n${math <= 0 ? `listo para *${usedPrefix}levelup*` : `_*${math}xp*_ Falta para subir de nivel`}
+▢ *⬆️ XP* : Total ${exp} (${user.exp - min} / ${xp})\n${math <= 0 ? `ready for *${usedPrefix}levelup*` : `_*${math}xp*_ Missing to level up`}
 ▢ *🏆Rank:* ${role}
 ▢ *📇 Registered :* ${registered ? 'Si': 'No'}
-▢ *⭐ Premium* : ${prem ? 'Si' : 'No'}
+▢ *⭐ Premium* : ${premium ? 'Si' : 'No'}
 └──────────────`
     conn.sendFile(m.chat, pp, 'perfil.jpg', str, m, false, { mentions: [who] })
     m.react(done)
