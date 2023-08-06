@@ -65,6 +65,8 @@ export async function handler(chatUpdate) {
                     user.afkReason = ''
                 if (!('banned' in user))
                     user.banned = false
+                 if (!('premium' in user))
+                    user.premium = false
                 if (!isNumber(user.warn))
                     user.warn = 0
                 if (!isNumber(user.level))
@@ -90,6 +92,7 @@ export async function handler(chatUpdate) {
                     warn: 0,
                     level: 0,
                     role: 'Novato',
+                    premium:false,
                     autolevelup: false,
                     chatbot: false,
                 }
@@ -150,7 +153,7 @@ export async function handler(chatUpdate) {
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
             if (settings) {
                 if (!('self' in settings)) settings.self = false
-                if (!('autoread' in settings)) settings.autoread = false
+                if (!('autoread' in settings)) settings.autoread = true
                 if (!('restrict' in settings)) settings.restrict = false
                 if (!('status' in settings)) settings.status = 0
             } else global.db.data.settings[this.user.jid] = {
@@ -178,7 +181,7 @@ export async function handler(chatUpdate) {
         const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const isOwner = isROwner || m.fromMe
         const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isPrems = isROwner || global.db.data.users.premium.includes(true)
 
         if (opts['queque'] && m.text && !(isMods || isPrems)) {
             let queque = this.msgqueque, time = 1000 * 5
