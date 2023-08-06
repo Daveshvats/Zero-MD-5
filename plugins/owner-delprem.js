@@ -1,22 +1,23 @@
 //import db from '../lib/database.js'
 
-let handler = async (m, { conn, usedPrefix, command, text }) => {
+let handler = async (m, { conn, text, usedPrefix, command }) => {
     let who
-    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false
-    else who = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.chat
-    let user = global.db.data.users[who]
-    if (!who) return m.reply(`✳️ Mention the user\n\n📌 *Example* :\n${usedPrefix + command} @tag`)
-    if (!global.prems.includes(who.split`@`[0])) throw '✳️ The user is not Premium'
-    let index = global.prems.findIndex(v => (v.replace(/[^0-9]/g, '') + '@s.whatsapp.net') === (who.replace(/[^0-9]/g, '') + '@s.whatsapp.net'))
-    global.prems.splice(index, 1)
-    conn.reply(m.chat, `✅ Premium removed \n\n@${who.split('@')[0]} you are no longer premium`, m, { mentions: [who] })
-    
-}
-handler.help = ['delprem @user']
-handler.tags = ['owner']
-handler.command = ['delprem', 'delpremium'] 
-
-handler.group = true
-handler.mods = true
-
-export default handler
+     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
+     else who = m.chat
+     let user = global.db.data.users[who]
+     if (!who) throw `✳️ Tag or mention someone\n\n📌 Example : ${usedPrefix + command} @user`
+     let users = global.db.data.users
+     users[who].premium = false
+     conn.reply(m.chat, `
+ ✅ YOU ARE REMOVED OF YOUR PREMIUM STATUS NOW 
+ ───────────
+ @${who.split`@`[0]} YOU WILL NOT BE ABLE TO USE PREMIUM COMMANDS NOW`, m, { mentions: [who] })
+ }
+ handler.help = ['delprem @user']
+ handler.tags = ['owner']
+ handler.command = /^delprem$/i
+ handler.group = true
+ handler.mods = true
+ 
+ export default handler
+ 
