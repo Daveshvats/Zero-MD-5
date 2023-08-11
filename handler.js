@@ -373,6 +373,7 @@ export async function handler(chatUpdate) {
                     isOwner,
                     isRAdmin,
                     isAdmin,
+                    isMods,
                     isBotAdmin,
                     isPrems,
                     chatUpdate,
