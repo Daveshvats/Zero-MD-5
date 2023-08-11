@@ -10,6 +10,7 @@ let q = m.quoted ? m.quoted : m
     conn.sendMessage(m.chat, { sticker: ZeroStikRep }, { quoted: m })
     let data2 = await await q.download();
     let image = await uploadImage(data2)
+    const styles = `${text}`
     if (text == "general"){
     for (const [index, style] of styles.entries()) {
     const { data, status: statusCode } = await axios
