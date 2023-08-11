@@ -152,7 +152,7 @@ if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈
 			await conn.sendMessage(
 				m.chat,
 				{
-					text: "Generating Stop",
+					text: `Generating Stop ${status}`,
 				},
 				{ quoted: m }
 			);
