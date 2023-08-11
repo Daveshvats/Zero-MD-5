@@ -1,5 +1,6 @@
 import uploadImage from '../lib/uploadImage.js'
 import axios from "axios"
+import fs from 'fs'
 let handler = async (m, { conn,text,command }) => {
 let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ""
