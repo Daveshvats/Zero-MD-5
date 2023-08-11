@@ -175,4 +175,5 @@ if (!texts.find((v) => (new RegExp(v.title, 'gi')).test(text))) throw `*[❗𝐈
     handler.help = ['diffme']
     handler.tags = ['ai']
     handler.command = ['diffme']
+	handler.premium = true
     export default handler
