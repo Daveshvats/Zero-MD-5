@@ -8,10 +8,11 @@ let q = m.quoted ? m.quoted : m
     await m.reply("wait")
     let ZeroStikRep = fs.readFileSync('./src/stickers/wait.webp')
     conn.sendMessage(m.chat, { sticker: ZeroStikRep }, { quoted: m })
-    let data2 = await await q.download();
-    let image = await uploadImage(data2)
+
     const styles = `${text}`
     if (text == "general"){
+      let data2 = await await q.download();
+      let image = await uploadImage(data2)
     for (const [index, style] of styles.entries()) {
     const { data, status: statusCode } = await axios
 			.request({
@@ -23,7 +24,7 @@ let q = m.quoted ? m.quoted : m
 				},
                 data :{
                   "server_name": "frieren",
-                  "init_image": `${image}`,
+                  "init_image": image,
                   "scale": 3,
                   "model_id": "realesr-general-x4v3"
                 }
@@ -50,6 +51,8 @@ let q = m.quoted ? m.quoted : m
         }
       }
       if (text == "anime"){
+        let data2 = await await q.download();
+        let image = await uploadImage(data2)
         for (const [index, style] of styles.entries()) {
         const { data, status: statusCode } = await axios
           .request({
@@ -88,6 +91,8 @@ let q = m.quoted ? m.quoted : m
             }
           }
           if (text == "beauty"){
+            let data2 = await await q.download();
+            let image = await uploadImage(data2)
             for (const [index, style] of styles.entries()) {
             const { data, status: statusCode } = await axios
               .request({
