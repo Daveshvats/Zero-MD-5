@@ -1,137 +1,61 @@
 import uploadImage from '../lib/uploadImage.js'
+import formData from "form-data"
 import axios from "axios"
-import fs from 'fs'
 let handler = async (m, { conn,text,command }) => {
 let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ""
     if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command /up (type)!`)
-    await m.reply("wait")
-    let ZeroStikRep = fs.readFileSync('./src/stickers/wait.webp')
-    conn.sendMessage(m.chat, { sticker: ZeroStikRep }, { quoted: m })
-
-    const styles = `${text}`
-    if (text == "general"){
-      let data2 = await await q.download();
-      let image = await uploadImage(data2)
+    const styles = [`${text}`];
+    // send text to user; if the image is being generate
+    m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
+  
+    // Find your way to get image buffer
+    const imgBuffer = await q.download();
+    const form = new formData
+  
+    form.append("file", Buffer.from(imgBuffer), {
+      contentType: "image/jpg",
+      filename: "image.jpg"
+    })
+  
     for (const [index, style] of styles.entries()) {
-    const { data, status: statusCode } = await axios
-			.request({
-				baseURL: "https://api.itsrose.life", // "https://api.itsrose.site"
-				url: "/image/real_esrgan",
-				method: "POST",
-				params: {
-					apikey: "Rs-edgarsan",
-				},
-                data :{
-                  "server_name": "frieren",
-                  "init_image": image,
-                  "scale": 3,
-                  "model_id": "realesr-general-x4v3"
-                }
-			})
-			.catch((e) => e?.response);
-		const { status, result, message, metadata } = data;
-
-		if (!status) {
-			await conn.sendMessage(
-				m.chat,
-				{
-					text: "Generating Stop",
-				},
-				{ quoted: m }
-			);
-			break;
-		}
-		// Send the base64 image to conn.
-		await conn.sendMessage(
-			m.chat,
-			{ image:{url:`${result.images}`}},
-			{ quoted: m }
-		);
-        }
-      }
-      if (text == "anime"){
-        let data2 = await await q.download();
-        let image = await uploadImage(data2)
-        for (const [index, style] of styles.entries()) {
-        const { data, status: statusCode } = await axios
-          .request({
-            baseURL: "https://api.itsrose.life", // "https://api.itsrose.site"
-            url: "/image/real_esrgan",
-            method: "POST",
-            params: {
-              apikey: "Rs-edgarsan",
-            },
-                    data :{
-                      "server_name": "frieren",
-                      "init_image": `${image}`,
-                      "scale": 3,
-                      "model_id": "RealESRGAN_x4plus_anime_6B"
-                    }
-          })
-          .catch((e) => e?.response);
-        const { status, result, message, metadata } = data;
-    
-        if (!status) {
-          await conn.sendMessage(
-            m.chat,
-            {
-              text: "Generating Stop",
-            },
-            { quoted: m }
-          );
-          break;
-        }
-        // Send the base64 image to conn.
+      const { data, status: statusCode } = await axios
+        .request({
+          baseURL: "https://api.itsrose.life", // "https://api.itsrose.site"
+          url: "/image/esrgan",
+          method: "POST",
+          params: {
+            json: true, // false
+            apikey: "Rs-edgarsan",
+          },
+          data: form,
+        })
+        .catch((e) => e?.response);
+      const { status, result, message } = data;
+  
+      if (!status) {
         await conn.sendMessage(
           m.chat,
-          { image:{url:`${result.images}`}},
+          {
+            text: "Generating Stop",
+          },
           { quoted: m }
         );
-            }
-          }
-          if (text == "beauty"){
-            let data2 = await await q.download();
-            let image = await uploadImage(data2)
-            for (const [index, style] of styles.entries()) {
-            const { data, status: statusCode } = await axios
-              .request({
-                baseURL: "https://api.itsrose.life", // "https://api.itsrose.site"
-                url: "/image/real_esrgan",
-                method: "POST",
-                params: {
-                  apikey: "Rs-edgarsan",
-                },
-                        data :{
-                          "server_name": "frieren",
-                          "init_image": `${image}`,
-                          "scale": 3,
-                          "model_id": "RealESRGAN_x4plus"
-                        }
-              })
-              .catch((e) => e?.response);
-            const { status, result, message, metadata } = data;
-        
-            if (!status) {
-              await conn.sendMessage(
-                m.chat,
-                {
-                  text: "Generating Stop",
-                },
-                { quoted: m }
-              );
-              break;
-            }
-            // Send the base64 image to conn.
-            await conn.sendMessage(
-              m.chat,
-              { image:{url:`${result.images}`}},
-              { quoted: m }
-            );
-                }
-              }
+        break;
+      }
+      
+      const caption = `Style: ${style.replace("_", " ")}`;
+      // Send the base64 image to conn.
+      await conn.sendMessage(
+        m.chat,
+        {
+          image: Buffer.from(result["base64Image"], "base64"),
+        },
+        { quoted: m }
+      );
     }
-    handler.help = ['/up general']
+    }
+    handler.help = ['/up']
     handler.tags = ['ai']
     handler.command = ['up','upscale']
     handler.premium = true
