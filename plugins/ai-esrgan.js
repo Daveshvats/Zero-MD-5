@@ -10,7 +10,7 @@ let q = m.quoted ? m.quoted : m
     conn.sendMessage(m.chat, { sticker: ZeroStikRep }, { quoted: m })
     let data2 = await await q.download();
     let image = await uploadImage(data2)
-    if (text == general){
+    if (text == "general"){
     for (const [index, style] of styles.entries()) {
     const { data, status: statusCode } = await axios
 			.request({
@@ -48,7 +48,7 @@ let q = m.quoted ? m.quoted : m
 		);
         }
       }
-      if (text == anime){
+      if (text == "anime"){
         for (const [index, style] of styles.entries()) {
         const { data, status: statusCode } = await axios
           .request({
@@ -86,7 +86,7 @@ let q = m.quoted ? m.quoted : m
         );
             }
           }
-          if (text == beauty){
+          if (text == "beauty"){
             for (const [index, style] of styles.entries()) {
             const { data, status: statusCode } = await axios
               .request({
