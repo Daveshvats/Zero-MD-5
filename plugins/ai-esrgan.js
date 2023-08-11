@@ -37,7 +37,7 @@ let q = m.quoted ? m.quoted : m
         await conn.sendMessage(
           m.chat,
           {
-            text: "Generating Stop",
+            text: `Generating Stop ${status}, ${message}`,
           },
           { quoted: m }
         );
