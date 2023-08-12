@@ -22,8 +22,8 @@ let q = m.quoted ? m.quoted : m
         data: {
           "server_name": "frieren",
            "init_image": `${lola}`,
-           "scale": 2,
-           "model_id": "realesr-general-x4v3"
+           "scale": 3,
+           "model_id": "RealESRNet_x4plus"
         }
       })
       .catch((e) => e?.["response"]);
@@ -35,10 +35,12 @@ let q = m.quoted ? m.quoted : m
     }
     // if you set parameter json to true;
     const { result } = data;
+    let waifu = uploadImage(result["images"])
+    let drama = `Download The upscaled image from here ${waifu}`
     await conn.sendMessage(
 			m.chat,
 			{
-				image: {url:result["images"]}
+				text: drama
 			},
 			{ quoted: m }
 		);
