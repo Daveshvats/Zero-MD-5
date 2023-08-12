@@ -23,38 +23,43 @@ let q = m.quoted ? m.quoted : m
       contentType: "image/jpg",
       filename: "image.jpg"
     })
-    // async/await
-    const { data } = await axios
-      .request({
-        baseURL: "https://api.itsrose.life",
-        url: "/image/esrgan",
-        method: "POST",
-        params: {
-          ...queryParams,
-          apikey: "Rs-edgarsan",
+  
+    for (const [index, style] of styles.entries()) {
+      const { data, status: statusCode } = await axios
+        .request({
+          baseURL: "https://api.itsrose.life", // "https://api.itsrose.site"
+          url: "/image/esrgan",
+          method: "POST",
+          params: {
+            json: true, // false
+            apikey: "Rs-edgarsan",
+          },
+          data: form,
+        })
+        .catch((e) => e?.response);
+      const { status, result, message } = data;
+  
+      if (!status) {
+        await conn.sendMessage(
+          m.chat,
+          {
+            text: `Generating Stop ${status}, ${message}`,
+          },
+          { quoted: m }
+        );
+        break;
+      }
+      
+      const caption = `Style: ${style.replace("_", " ")}`;
+      // Send the base64 image to conn.
+      await conn.sendMessage(
+        m.chat,
+        {
+          image: Buffer.from(result["base64Image"], "base64"),
         },
-        data: form,
-      })
-      .catch((e) => e?.["response"]);
-    const { status, message } = data; // any statusCode
-    
-    if (!status) {
-      // something wrong with your request
-      return console.error(message); // see the message
+        { quoted: m }
+      );
     }
-    // if you set parameter json to true;
-    const { result } = data;
-    
-    /** @warning will log image in base64 encoding */
-    console.log(result);
-    await conn.sendMessage(
-			m.chat,
-			{
-				image: Buffer.from(result, "base64"),
-				caption,
-			},
-			{ quoted: m }
-		);
     }
     handler.help = ['/up']
     handler.tags = ['ai']
