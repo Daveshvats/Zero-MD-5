@@ -23,7 +23,7 @@ let q = m.quoted ? m.quoted : m
           "server_name": "frieren",
            "init_image": `${lola}`,
            "scale": 3,
-           "model_id": "RealESRNet_x4plus"
+           "model_id": "RealESRGAN_x4plus_anime_6B"
         }
       })
       .catch((e) => e?.["response"]);
@@ -47,7 +47,7 @@ let q = m.quoted ? m.quoted : m
     }
     handler.help = ['/up']
     handler.tags = ['ai']
-    handler.command = ['up','upscale','up1']
+    handler.command = ['upanime','animeupscale','upanime','up2']
     handler.premium = true
     export default handler
 
