@@ -38,7 +38,7 @@ let q = m.quoted ? m.quoted : m
     await conn.sendMessage(
 			m.chat,
 			{
-				image: {url:result.images}
+				image: {url:result[images]}
 			},
 			{ quoted: m }
 		);
