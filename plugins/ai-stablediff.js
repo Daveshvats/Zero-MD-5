@@ -12,7 +12,7 @@ let inilogo6 = args.join(" ")
 var logo6 = inilogo6.split('|')[1]
 var logo4 = inilogo4.split('|')[0]
                 //https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=girl&negative_prompt=girl&width=512&height=512&steps=25&model_id=dream_shaper&sampler=UniPC&cfg=7.5&enhance_prompt=no&multi_lingual=no&image_num=1&safety_checker=no&panorama=no&lora_strength=1&hiresFix=no&tomesd=yes&use_karras_sigmas=yes&clip_skip=2&apikey=Rs-edgarsan
-let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=${logo6}&width=512&height=512&steps=25&model_id=${model_id}&sampler=UniPC&cfg=7.5&enhance_prompt=no&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&lora_model=${lora_model}&lora_strength=1&hiresFix=no&tomesd=yes&use_karras_sigmas=yes&clip_skip=2&apikey=Rs-edgarsan`)
+let wife = await fetch(`https://api.itsrose.life/image/diffusion/txt2img?server_name=frieren&prompt=${logo4}&negative_prompt=(worst quality, low quality:1.3), extra hands, extra limbs, bad anatomy&width=512&height=512&steps=25&model_id=${logo6}&sampler=UniPC&cfg=7.5&enhance_prompt=no&multi_lingual=yes&image_num=1&safety_checker=no&panorama=no&lora_model=${lora_model}&lora_strength=1&hiresFix=no&tomesd=yes&use_karras_sigmas=yes&clip_skip=2&apikey=Rs-edgarsan`)
 let kalu = await wife.json()
 let shortUrl1 = await fetch(`https://tinyurl.com/api-create.php?url=${kalu.result.images}`).text()
 let messd = `*Prompt* : ${kalu.result.metadata.prompt}.
