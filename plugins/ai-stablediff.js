@@ -3,9 +3,35 @@ let handler = async (m, { conn,text}) => {
 const body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 const args = body.trim().split(/ +/).slice(1)
 const lora_model = global.db.data.chats[m.chat].lora_model
-const model_id = global.db.data.chats[m.chat].model_id
-if (!text) return m.reply ('*Please provide a query and a model to use* for example /stablediff potrait of a girl = prompt | dream_shaper = model or any other model | negative promp what you dont want in the image')
+if (!text) return m.reply ('*Please provide a query and a model to use* for example /stablediff potrait of a girl = prompt | dream_shaper = model or any other model')
 if (!args[0]) return m.reply(`Please Provide a prompt`)
+if (!args[1])return m.reply(` select one of the models and use the commands again like /stablediff prompt | model_id"realisian",
+"mix_9_realistic",
+"realistic_vision_v51",
+"dream_shaper_v8",
+"gta5_artwork",
+"midjourney_v4_art",
+"redshift_diffusion",
+"openjourney_v2",
+"dream_shaper",
+"realistic_vision_v13",
+"anything_v3",
+"openjourney_v4",
+"future",
+"majic_mix",
+"guo_feng_3",
+"graceful",
+"realistic_vision_v20",
+"henmix_real",
+"counterfeit_v3",
+"toon_you",
+"mistoon",
+"aom3",
+"car_dos",
+"prime_mix",
+"comics_vision",
+"cute_rich",
+"cartoon_classic"`)
 await m.reply("*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*")
 let inilogo4 = args.join(" ")
 let inilogo6 = args.join(" ")
