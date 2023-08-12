@@ -14,7 +14,7 @@ let q = m.quoted ? m.quoted : m
     const form = new formData
     
     const queryParams = {
-      json: false, // get json response instead of image buffer
+      json: true, // get json response instead of image buffer
     };
     
     // find your way to get image buffer
@@ -50,7 +50,7 @@ let q = m.quoted ? m.quoted : m
     await conn.sendMessage(
 			m.chat,
 			{
-				image: Buffer.from(result, "base64"),
+				image: Buffer.from(result["base64Image"], "base64"),
 				caption,
 			},
 			{ quoted: m }
