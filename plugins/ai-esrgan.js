@@ -8,29 +8,23 @@ let q = m.quoted ? m.quoted : m
     // send text to user; if the image is being generate
     m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
     // Find your way to get image buffer
-    const imgBuffer = await q.download();
-    const form = new formData
-    const queryParams = {
-      json: true, // get json response instead of image buffer
-    };
-    
-    // find your way to get image buffer
-    
-    form.append("file", Buffer.from(imgBuffer), {
-      contentType: "image/jpg",
-      filename: "image.jpg"
-    })
+    const imgB = await q.download();
+    const lola = await uploadImage(imgB)
     // async/await
     const { data } = await axios
       .request({
         baseURL: "https://api.itsrose.life",
-        url: "/image/esrgan",
+        url: "/image/real_esrgan",
         method: "POST",
         params: {
-          ...queryParams,
           apikey: "Rs-edgarsan",
         },
-        data: form,
+        data: {
+          "server_name": "frieren",
+           "init_image": `${lola}`,
+           "scale": 2,
+           "model_id": "realesr-general-x4v3"
+        }
       })
       .catch((e) => e?.["response"]);
     const { status, message } = data; // any statusCode
@@ -44,7 +38,7 @@ let q = m.quoted ? m.quoted : m
     await conn.sendMessage(
 			m.chat,
 			{
-				image: Buffer.from(result.base64Image, "base64")
+				image: {url:result.images}
 			},
 			{ quoted: m }
 		);
