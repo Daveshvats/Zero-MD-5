@@ -35,8 +35,7 @@ let q = m.quoted ? m.quoted : m
     }
     // if you set parameter json to true;
     const { result } = data;
-    let waifu = uploadImage(result["images"])
-    let drama = `Download The upscaled image from here ${waifu}`
+    let drama = `Download The upscaled image from here ${result["images"]}`
     await conn.sendMessage(
 			m.chat,
 			{
