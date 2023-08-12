@@ -41,13 +41,10 @@ let q = m.quoted ? m.quoted : m
     }
     // if you set parameter json to true;
     const { result } = data;
-    
-    /** @warning will log image in base64 encoding */
-    console.log(result);
     await conn.sendMessage(
 			m.chat,
 			{
-				image: Buffer.from(result["base64Image"], "base64")
+				image: Buffer.from(result.base64Image, "base64")
 			},
 			{ quoted: m }
 		);
