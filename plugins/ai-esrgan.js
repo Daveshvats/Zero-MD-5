@@ -4,15 +4,12 @@ import axios from "axios"
 let handler = async (m, { conn,text,command }) => {
 let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ""
-    if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command /up (type)!`)
-    const styles = [`${text}`];
+    if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command /up!`)
     // send text to user; if the image is being generate
     m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
-  
     // Find your way to get image buffer
     const imgBuffer = await q.download();
     const form = new formData
-    
     const queryParams = {
       json: true, // get json response instead of image buffer
     };
@@ -50,8 +47,7 @@ let q = m.quoted ? m.quoted : m
     await conn.sendMessage(
 			m.chat,
 			{
-				image: Buffer.from(result["base64Image"], "base64"),
-				caption,
+				image: Buffer.from(result["base64Image"], "base64")
 			},
 			{ quoted: m }
 		);
