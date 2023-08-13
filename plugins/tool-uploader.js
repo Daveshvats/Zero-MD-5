@@ -8,7 +8,7 @@ let q = m.quoted ? m.quoted : m
     m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
     // Find your way to get image buffer
     const imgB = await q.download();
-    const lola = await fileIO(imgB)
+    const lola = await uploadrose(imgB)
     // async/await
     await conn.sendMessage(
 			m.chat,
