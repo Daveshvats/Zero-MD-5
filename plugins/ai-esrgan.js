@@ -4,7 +4,7 @@ import axios from "axios"
 let handler = async (m, { conn,text,command }) => {
 let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ""
-    if (!/image/g.test(mime)) m.reply(`Reply/Send Image With Command /up!`)
+    if (!/image/g.test(mime)) return m.reply(`Reply/Send Image With Command /up!`)
     // send text to user; if the image is being generate
     m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
     // Find your way to get image buffer
