@@ -344,7 +344,7 @@ export async function handler(chatUpdate) {
                     m.reply('chirrido -_-') // Hehehe
                 else
                     m.exp += xp
-                if (!isPrems && plugin.diamond && global.db.data.users[m.sender].diamond < plugin.diamond * 1) {
+                if (!isPrems && plugin.diamond && global.db.data.users[m.sender].diamond < plugin.diamond * 2) {
                     this.reply(m.chat, `✳️ Your diamonds ran out\nuse the following command to buy more diamonds \n*${usedPrefix}buy* <amount> \n*${usedPrefix}buyall*`, m)
                     continue // Limit habis
                 }
@@ -410,8 +410,8 @@ export async function handler(chatUpdate) {
     } finally {
         if (opts['queque'] && m.text) {
             const quequeIndex = this.msgqueque.indexOf(m.id || m.key.id)
-            if (quequeIndex !== -1)
-                this.msgqueque.splice(quequeIndex, 1)
+            if (quequeIndex !== -2)
+                this.msgqueque.splice(quequeIndex, 2)
         }
         //console.log(global.db.data.users[m.sender])
         let user, stats = global.db.data.stats
