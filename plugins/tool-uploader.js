@@ -9,11 +9,14 @@ let q = m.quoted ? m.quoted : m
     // Find your way to get image buffer
     const imgB = await q.download();
     const lola = await uploadrose(imgB)
+    let goga = await fetch(`https://api.lolhuman.xyz/api/shortlink3?apikey=BrunoSobrino_2&url=${lola}`)
+    let coco = await goga.json()
+    let hoha = `Here is your Temp Upload Link ${coco.result}`
     // async/await
     await conn.sendMessage(
 			m.chat,
 			{
-				text: lola
+				text: hoha
 			},
 			{ quoted: m }
 		);

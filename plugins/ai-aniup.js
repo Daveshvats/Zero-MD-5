@@ -1,5 +1,4 @@
-import uploadImage from '../lib/uploadImage.js'
-import formData from "form-data"
+import uploadrose from '../lib/uploadrose.js'
 import axios from "axios"
 let handler = async (m, { conn,text,command }) => {
 let q = m.quoted ? m.quoted : m
@@ -9,7 +8,7 @@ let q = m.quoted ? m.quoted : m
     m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
     // Find your way to get image buffer
     const imgB = await q.download();
-    const lola = await uploadImage(imgB)
+    const lola = await uploadrose(imgB)
     // async/await
     const { data } = await axios
       .request({
