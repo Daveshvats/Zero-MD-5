@@ -1,4 +1,4 @@
-import uploadFile from '../lib/uploadFile.js'
+import fileIO from '../lib/uploadFile.js'
 import uploadrose from '../lib/uploadrose.js'
 let handler = async (m, { conn,text,command }) => {
 let q = m.quoted ? m.quoted : m
@@ -8,7 +8,7 @@ let q = m.quoted ? m.quoted : m
     m.reply(`*⌛ _WAIT..._*\n*▰▰▰▱▱▱▱▱*`);
     // Find your way to get image buffer
     const imgB = await q.download();
-    const lola = await uploadFile(imgB)
+    const lola = await fileIO(imgB)
     // async/await
     await conn.sendMessage(
 			m.chat,
