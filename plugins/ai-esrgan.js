@@ -48,6 +48,6 @@ let q = m.quoted ? m.quoted : m
     handler.help = ['/up']
     handler.tags = ['ai']
     handler.command = ['up','upscale','up1']
-    handler.premium = true
+    handler.diamond = true
     export default handler
 

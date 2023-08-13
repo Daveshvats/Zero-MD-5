@@ -47,6 +47,6 @@ let q = m.quoted ? m.quoted : m
     handler.help = ['/up']
     handler.tags = ['ai']
     handler.command = ['upanime','animeupscale','upanime','up2']
-    handler.premium = true
+    handler.diamond = true
     export default handler
 

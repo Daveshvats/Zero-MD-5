@@ -116,8 +116,6 @@ export async function handler(chatUpdate) {
                     chat.sDemote = ''
                 if (!('lora_model' in chat))
                     chat.lora_model = ''
-                if (!('model_id' in chat))
-                    chat.model_id = 'dream_shaper'
                 if (!('delete' in chat))
                     chat.delete = true
                 if (!('antiLink' in chat))
@@ -143,11 +141,9 @@ export async function handler(chatUpdate) {
                     antiLink: false,
                     viewonce: false,
                     useDocument: true,
-                    onlyLatinos: false,
                     nsfw: false, 
                     expired: 0,
                     lora_model: '',
-                    model_id:'',
                 }
             let settings = global.db.data.settings[this.user.jid]
             if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
@@ -343,7 +339,7 @@ export async function handler(chatUpdate) {
                     continue
                 }
                 m.isCommand = true
-                let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
+                let xp = 'exp' in plugin ? parseInt(plugin.exp) : 4 // XP Earning per command
                 if (xp > 200)
                     m.reply('chirrido -_-') // Hehehe
                 else
@@ -422,7 +418,7 @@ export async function handler(chatUpdate) {
         if (m) {
             if (m.sender && (user = global.db.data.users[m.sender])) {
                 user.exp += m.exp
-                user.diamond -= m.diamond * 1
+                user.diamond -= m.diamond * 2
             }
 
             let stat
