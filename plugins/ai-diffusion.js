@@ -7,6 +7,23 @@ let inilogo4 = args.join(" ")
 let inilogo6 = args.join(" ")
 var logo6 = inilogo6.split('|')[1]
 var logo4 = inilogo4.split('|')[0]
+if(!logo6) return m.reply(`Give a model List of models \n\n "ACG",
+"90s Comic",
+"Realistic",
+"Color Illustration",
+"Pencil Sketch",
+"Game CG",
+"Super Hero",
+"Wild",
+"Z Fighters",
+"Asian",
+"Pastel Colors",
+"Ink and Wask",
+"Ninja",
+"Chibi",
+"Fantastic JOJO",
+"Cyberpunk",
+"Tarot"`)
 if(!logo4) return m.reply(`Give a prompt and use the command like /diffusion prompt | model \n\n List of Models \n\n "ACG",
 "90s Comic",
 "Realistic",
